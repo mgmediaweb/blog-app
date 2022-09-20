@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    @title = 'Welcome users'
+    @title = 'List users'
   end
 
   def show; end
