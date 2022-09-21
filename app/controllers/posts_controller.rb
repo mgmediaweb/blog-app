@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    # @posts = Post.find_by(author: @user)
-    @posts = Post.all
+    @posts = Post.where(author: @user)
+    # @posts = Post.all
     @title = "Post of #{@user.name}"
   end
 
