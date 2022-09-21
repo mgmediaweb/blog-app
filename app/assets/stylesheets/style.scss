@@ -4,7 +4,7 @@ $transition: 0.5s;
 
 //Colors
 $color-background: #d5f5e3;
-$primary: #8E44ad;
+$primary: #8e44ad;
 
 body {
   background-color: $color-background !important;
@@ -30,7 +30,7 @@ body {
 .img-link {
   opacity: 1;
   transition: $transition;
-  
+
   &:hover {
     opacity: 0.5;
     transition: $transition;
