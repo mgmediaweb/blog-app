@@ -1,1 +1,13 @@
-<h1>Welcome to the list of users</h1>
+<div class="container py-3">
+  <% @users.each do |user| %>
+    <div class="card shadow mb-3">
+      <div class="card-body p-2">
+        <a href="users/<%=user.id %>" class="d-flex align-items-center text-decoration-none">
+          <img src="<%=user.photo || image_url('empty_user.png') %>" alt="<%=user.name %>" title="<%=user.name %>" class="me-2 user-image img-link" />
+          <h5 class="card-title m-0 p-0"><%=user.name %></h5>
+        </a>
+        <p class="card-text text-secondary fst-italic mb-1 me-2 p-0 position-absolute bottom-0 end-0">Posts: <%=user.posts_counter %></p> 
+      </div>
+    </div>
+  <% end %>
+</div>
