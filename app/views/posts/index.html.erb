@@ -1,1 +1,32 @@
-<h1>Welcome to the list of posts</h1>
+<div class="container py-3">
+  <%=link_to '< Go back', :back, class: 'title-link' %>
+
+  <div class="card shadow user-card">
+    <div class="card-body p-2">
+      <img src="<%=@user.photo || image_url('empty_user.png') %>" alt="<%=@user.name %>" title="<%=@user.name %>" class="user-image user-image-profile" />
+      <h3 class="card-title"><%=@user.name %></h3>
+    </div>
+  </div>
+
+  <h5 class="my-3">Posts (<%=@user.posts_counter %>)</h5>
+
+  <% @posts.each do |post| %>
+    <div class="card shadow mb-3">
+      <div class="card-body p-2">
+        <p class="card-text text-secondary fst-italic position-absolute top-0 end-0 me-2 mt-2">Likes: <%=post.likes_counter %></p>
+        <h5 class="card-title m-0 p-0 fw-bold"><a href="/users/<%=@user.id %>/posts/<%=post.id %>" class="title-link"><%=post.title %></a></h5>
+        <p class="card-text"><%=post.text %></p>
+
+        <hr class="mt-4" />
+        <span class="badge bg-secondary my-3">Comments (<%=post.comments_counter %>)</span>
+
+        <% post.comments.each do |comment| %>
+          <div class="mb-3">
+            <p class="card-title m-0 p-0 fw-bold"><%=comment.author.name %></p>
+            <p class="card-text m-0 p-0"><%=comment.text %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
