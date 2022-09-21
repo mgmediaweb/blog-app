@@ -13,7 +13,7 @@
 
   <h5 class="my-3">Posts (<%=@user.posts_counter %>)</h5>
 
-  <% @user.posts.order(id: :desc).first(5).each do |post| %>
+  <% @user.last_three_posts.each do |post| %>
     <div class="card shadow mb-3">
       <div class="card-body p-2">
         <h5 class="card-title m-0 p-0 fw-bold"><a href="/users/<%=@user.id %>/posts/<%=post.id %>" class="title-link"><%=post.title %></a></h5>
