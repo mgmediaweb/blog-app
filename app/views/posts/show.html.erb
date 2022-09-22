@@ -1,14 +1,45 @@
 <div class="container py-3">
-  <%=link_to '< Go back', :back, class: 'title-link' %>
+  <%=link_to '< Back to user', user_url(@post.author), class: 'title-link' %>
 
   <div class="card shadow user-card">
     <div class="card-body p-2">
-      <p class="card-text text-secondary fst-italic position-absolute top-0 end-0 me-2 mt-2">Likes: <%=@post.likes_counter %></p>
+      <p class="card-text text-secondary fst-italic position-absolute top-0 end-0 me-2 mt-2">
+        Likes: <%=@post.likes_counter %>
+      </p>
       <h3 class="card-title"><%=@post.title %></h3>
       <p class="card-text"><%=@post.text %></p>
 
       <hr class="mt-4" />
-      <span class="badge bg-secondary my-3">Comments (<%=@post.comments_counter %>)</span>
+      
+
+      <div class="row my-3">
+        <div class="col-6">
+          <span class="badge bg-secondary">Comments (<%=@post.comments_counter %>)</span>
+        </div>
+        <div class="col-6 text-end">
+          <a href="/comments/new?post=<%=@post.id %>">Create</a>
+          <%=
+            link_to 'Create',
+            comments_url + '/new/',
+            class: 'btn btn-sm btn-primary',
+            role: 'buton'
+          %>
+        </div>    
+      </div>
+
+<%= form_with model: @comment, url: '/comments' do |form| %>
+  <input type="hidden" name="post" value="<%=@post.id %>">
+  <div class="mt-3">
+    <%=form.label :text, class: 'form-label' %><br>
+    <%=form.text_area :text, :required => true, class: 'form-control no-resize' %>
+  </div>
+  <div class="mt-4 text-end">
+    <%= button_tag type: 'submit', class: "btn btn-primary ms-3" do %>
+      Create
+      <i class="fas fa-save ms-2"></i>
+    <% end %>
+  </div>
+<% end %>
 
       <% @post.comments.each do |comment| %>
         <div class="mb-3">

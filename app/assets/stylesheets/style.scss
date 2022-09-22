@@ -10,6 +10,42 @@ body {
   background-color: $color-background !important;
 }
 
+.field_with_errors {
+  label {
+    color: red;
+    margin: 0;
+    padding: 0;
+  }
+  input {
+    color: red;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.img-link {
+  opacity: 1;
+  transition: $transition;
+
+  &:hover {
+    opacity: 0.5;
+    transition: $transition;
+  }
+}
+
+.no-resize {
+  resize: none;
+}
+
+.title-link {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .user-card {
   margin: $padding*4 0 $padding*2 0;
 }
@@ -27,23 +63,5 @@ body {
   }
 }
 
-.img-link {
-  opacity: 1;
-  transition: $transition;
-
-  &:hover {
-    opacity: 0.5;
-    transition: $transition;
-  }
-}
-
-.title-link {
-  color: $primary;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
 @import "bootstrap";
+
