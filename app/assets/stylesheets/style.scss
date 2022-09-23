@@ -10,6 +10,29 @@ body {
   background-color: $color-background !important;
 }
 
+.img-link {
+  opacity: 1;
+  transition: $transition;
+
+  &:hover {
+    opacity: 0.5;
+    transition: $transition;
+  }
+}
+
+.no-resize {
+  resize: none;
+}
+
+.title-link {
+  color: $primary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
 .user-card {
   margin: $padding*4 0 $padding*2 0;
 }
@@ -24,25 +47,6 @@ body {
     position: absolute;
     right: $padding*2;
     top: ($user-image-size/2) * -1;
-  }
-}
-
-.img-link {
-  opacity: 1;
-  transition: $transition;
-
-  &:hover {
-    opacity: 0.5;
-    transition: $transition;
-  }
-}
-
-.title-link {
-  color: $primary;
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
   }
 }
 

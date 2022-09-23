@@ -1,14 +1,37 @@
 <div class="container py-3">
-  <%=link_to '< Go back', :back, class: 'title-link' %>
+  <%=link_to '< Back to user', user_url(@post.author), class: 'title-link' %>
 
   <div class="card shadow user-card">
     <div class="card-body p-2">
-      <p class="card-text text-secondary fst-italic position-absolute top-0 end-0 me-2 mt-2">Likes: <%=@post.likes_counter %></p>
+      <%= form_with url: '/likes', class: 'd-flex w-auto position-absolute top-0 end-0 me-2 mt-2' do |form| %>
+        <span class="text-secondary fst-italic">Likes: <%=@post.likes_counter %></span>
+        <input type="hidden" name="post" value="<%=@post.id %>">
+        <button type="submit" class="btn btn-link p-0">
+          <i class="fas fa-heart fs-3 ms-2" title="Like"></i>
+        </button>
+      <% end %> 
       <h3 class="card-title"><%=@post.title %></h3>
       <p class="card-text"><%=@post.text %></p>
 
       <hr class="mt-4" />
-      <span class="badge bg-secondary my-3">Comments (<%=@post.comments_counter %>)</span>
+
+      <%= form_with model: @comment, url: '/comments' do |form| %>
+        <input type="hidden" name="post" value="<%=@post.id %>">
+        <div class="input-group mb-3">
+          <%=
+            form.text_field :text,
+            :required => true,
+            class: 'form-control',
+            placeholder: 'Enter a new comment'
+          %>
+          <%= button_tag type: 'submit', class: "btn btn-primary" do %>
+            Save
+            <i class="fas fa-save ms-2"></i>
+          <% end %>
+        </div>
+      <% end %> 
+
+      <span class="badge bg-secondary my-3">Comments (<%=@post.comments_counter %>)</span>      
 
       <% @post.comments.each do |comment| %>
         <div class="mb-3">

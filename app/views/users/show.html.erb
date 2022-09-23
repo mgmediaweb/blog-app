@@ -11,19 +11,35 @@
     </div>
   </div>
 
-  <h5 class="my-3">Posts (<%=@user.posts_counter %>)</h5>
+  <div class="row my-3">
+    <div class="col-6">
+      <h5>Posts (<%=@user.posts_counter %>)</h5>
+    </div>
+    <div class="col-6 text-end">
+      <%=
+        link_to 'Create',
+        posts_url + '/new',
+        class: 'btn btn-sm btn-primary',
+        role: 'buton'
+      %>
+    </div>    
+  </div>
 
   <% @user.last_three_posts.each do |post| %>
     <div class="card shadow mb-3">
       <div class="card-body p-2">
-        <h5 class="card-title m-0 p-0 fw-bold"><a href="/users/<%=@user.id %>/posts/<%=post.id %>" class="title-link"><%=post.title %></a></h5>
+        <h5 class="card-title m-0 p-0 fw-bold">
+          <%= link_to post.title, user_post_path(post.author, post), class: 'title-link' %>
+        </h5>
         <p class="card-text m-0 p-0"><%=post.text[0...100] %>...</p>
-        <p class="card-text text-secondary fst-italic text-end">Comments: <%=post.comments_counter %> | Likes: <%=post.likes_counter %></p>
+        <p class="card-text text-secondary fst-italic text-end">
+          Comments: <%=post.comments_counter %> | Likes: <%=post.likes_counter %>
+        </p>
       </div>
     </div>   
   <% end %>
 
   <div class="text-center mt-5">
-    <a href="/users/<%=@user.id %>/posts" class="btn btn-outline-dark" role="button">See All Posts</a>
+    <%= link_to 'See All Posts', user_path(@user) + "/posts", class: 'btn btn-outline-dark', role: 'button' %>
   </div>
 </div>

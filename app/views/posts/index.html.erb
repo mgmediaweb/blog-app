@@ -1,5 +1,5 @@
 <div class="container py-3">
-  <%=link_to '< Go back', :back, class: 'title-link' %>
+  <%=link_to '< Back to user', user_url(@user), class: 'title-link' %>
 
   <div class="card shadow user-card">
     <div class="card-body p-2">
@@ -13,8 +13,12 @@
   <% @posts.each do |post| %>
     <div class="card shadow mb-3">
       <div class="card-body p-2">
-        <p class="card-text text-secondary fst-italic position-absolute top-0 end-0 me-2 mt-2">Likes: <%=post.likes_counter %></p>
-        <h5 class="card-title m-0 p-0 fw-bold"><a href="/users/<%=@user.id %>/posts/<%=post.id %>" class="title-link"><%=post.title %></a></h5>
+        <p class="card-text text-secondary fst-italic position-absolute top-0 end-0 me-2 mt-2">
+          Likes: <%=post.likes_counter %>
+        </p>
+        <h5 class="card-title m-0 p-0 fw-bold">
+          <%= link_to post.title, user_post_path(post.author, post), class: 'title-link' %>
+        </h5>
         <p class="card-text"><%=post.text %></p>
 
         <hr class="mt-4" />

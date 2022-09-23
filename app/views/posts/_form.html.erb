@@ -1,0 +1,21 @@
+<%= form_with model: @post do |form| %>
+  <div class="mt-3">
+    <%=form.label :title, class: 'form-label' %><br>
+    <%=form.text_field :title, :required => true, class: 'form-control' %>
+  </div>
+  <div class="mt-3">
+    <%=form.label :text, class: 'form-label' %><br>
+    <%=form.text_area :text, :required => true, class: 'form-control no-resize' %>
+  </div>
+  <div class="mt-4 text-end">
+    <%= link_to :back, class: 'btn btn-outline-primary', role: 'button' do %>
+      <i class="fas fa-chevron-left me-2"></i>
+      Back
+    <% end %>
+
+    <%= button_tag type: 'submit', class: "btn btn-primary ms-3" do %>
+      Save
+      <i class="fas fa-save ms-2"></i>
+    <% end %>
+  </div>
+<% end %>
