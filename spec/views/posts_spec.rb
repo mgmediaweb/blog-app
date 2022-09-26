@@ -1,4 +1,4 @@
-require 'rails_helper'
+require '../rails_helper'
 
 RSpec.describe 'User page test', type: :request do
   it 'Get the response from index.' do
