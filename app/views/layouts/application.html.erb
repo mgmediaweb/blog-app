@@ -15,6 +15,23 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg bg-light shadow">
+      <div class="container">
+        <%= link_to 'Blog App', root_path, class: 'navbar-brand' %>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a href="/" class="nav-link">Log In</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>
