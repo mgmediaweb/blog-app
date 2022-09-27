@@ -1,6 +1,6 @@
 # Blog App
 
-> ...
+> Complete blog app, which has management of users, posts, comments and likes
 
 ## Built With
 
