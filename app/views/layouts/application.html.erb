@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light shadow">
+    <nav class="navbar navbar-expand-lg bg-light py-3 shadow">
       <div class="container">
         <%= link_to 'Blog App', root_path, class: 'navbar-brand' %>
 
@@ -26,14 +26,18 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
-              <a href="/" class="nav-link">Log In</a>
+              <% if user_signed_in? %>
+              <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: 'title-link' %>
+              <% else %>
+              <%= link_to 'Log In', user_session_path, class: 'title-link' %>
+              <% end %>             
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <p class="notice msj-win"><%= notice %></p>
+    <p class="alert msj-win"><%= alert %></p>
     <%= yield %>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>

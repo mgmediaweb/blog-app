@@ -9,4 +9,8 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @title = "Detail of #{@user.name}"
   end
+
+  def delete
+    p 'sign out'
+  end
 end
