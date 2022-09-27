@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  # before_action :authenticate_user!   -----this line should be added as well on the users controller 
+  # before_action :authenticate_user!   -----this line should be added as well on the users controller
   def index
     @user = User.find(params[:user_id])
     # @posts = Post.where(author: @user).includes([:author])
