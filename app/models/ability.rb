@@ -7,7 +7,8 @@ class Ability
     can :manage, Post, author: user
     can :manage, Comment, author: user
 
-     return unless user.role == 'admin'
+    return unless user.role == 'admin'
+
     can :manage, :all
 
     # if user.role == 'admin'
