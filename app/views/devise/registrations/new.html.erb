@@ -1,0 +1,41 @@
+<div class="container py-3">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+
+      <h3 class="text-center">Sign up</h3>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+
+        <div class="mb-3">
+          <%= f.label :name, class: 'form-label' %><br />
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: 'form-control' %>
+        </div> 
+
+        <div class="mb-3">
+          <%= f.label :email, class: 'form-label' %><br />
+          <%= f.email_field :email, autocomplete: "email", class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password, class: 'form-label' %>
+          <% if @minimum_password_length %>
+          <span class="text-secondary fst-italic">(<%= @minimum_password_length %> characters minimum)</span>
+          <% end %><br />
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :password_confirmation, class: 'form-label' %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control' %>
+        </div>
+
+        <div class="text-end">
+          <%= f.submit "Sign up", class: 'btn btn-primary' %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>  
+  </div>  
+</div>

@@ -7,14 +7,37 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link
-        rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-        crossorigin="anonymous"
-    />    
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
+    <nav class="navbar navbar-expand bg-light py-3 shadow">
+      <div class="container">
+        <%= link_to 'Blog App', root_path, class: 'navbar-brand' %>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <% if user_signed_in? %>
+                <%= button_to "Log Out", destroy_user_session_path, { method: :delete, data: { turbo: false }, class: 'btn btn-outline-dark'} %>
+              <% else %>
+                <%= link_to 'Log In', user_session_path, class: 'btn btn-outline-dark', role: 'button' %>
+              <% end %>             
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <p class="notice msj-win"><%= notice %></p>
+    <p class="alert msj-win"><%= alert %></p>
     <%= yield %>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
