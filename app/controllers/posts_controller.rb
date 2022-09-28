@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
 
   def index
     @user = User.find(params[:user_id])
-    # @posts = Post.where(author: @user).includes([:author])
     @posts = @user.posts.includes(:author)
     @title = "Post of #{@user.name}"
   end
@@ -22,6 +22,11 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(strong_params)
     redirect_to user_path(current_user) if @post.save
+  end
+
+  def destroy
+    Post.destroy(params[:id])
+    redirect_to user_path(current_user)
   end
 
   private

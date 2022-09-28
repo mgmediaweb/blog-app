@@ -18,7 +18,7 @@
     <div class="col-6 text-end">
       <%=
         link_to 'Create',
-        posts_url + '/new',
+        new_post_path,
         class: 'btn btn-sm btn-primary',
         role: 'buton'
       %>
@@ -32,9 +32,16 @@
           <%= link_to post.title, user_post_path(post.author, post), class: 'title-link' %>
         </h5>
         <p class="card-text m-0 p-0"><%=post.text[0...100] %>...</p>
-        <p class="card-text text-secondary fst-italic text-end">
+        <p class="card-text text-secondary fst-italic text-end mb-0">
           Comments: <%=post.comments_counter %> | Likes: <%=post.likes_counter %>
         </p>
+        <div class="position-absolute top-0 end-0 mt-2 me-2">
+          <% if can? :destroy, post %>
+            <%= button_to post_path(post), { method: :delete, data: { turbo: false }, class: 'btn btn-link'} do %>
+              <i class="fas fa-trash-alt" title="Delete Post"></i>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>   
   <% end %>
