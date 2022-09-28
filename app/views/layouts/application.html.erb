@@ -25,9 +25,11 @@
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
               <% if user_signed_in? %>
-                <%= button_to "Log Out", destroy_user_session_path, { method: :delete, data: { turbo: false }, class: 'btn btn-outline-dark'} %>
+                <%= current_user.name %>
+                <span class='text-primary ms-1'><%= "[#{current_user.role}]" if current_user.role == 'admin' %></span>
+                <%= button_to "Log Out", destroy_user_session_path, { method: :delete, data: { turbo: false }, class: 'btn btn-outline-dark ms-2'} %>
               <% else %>
                 <%= link_to 'Log In', user_session_path, class: 'btn btn-outline-dark', role: 'button' %>
               <% end %>             

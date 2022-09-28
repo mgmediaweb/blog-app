@@ -4,8 +4,8 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show]
   end
 
-  resources :posts, only: [:new, :create]
-  resources :comments, only: [:new, :create]
+  resources :posts, only: [:new, :create, :destroy]
+  resources :comments, only: [:new, :create, :destroy]
   resources :likes, only: [:create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
