@@ -7,15 +7,15 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <link
-        rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
-        crossorigin="anonymous"
-    />    
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+      integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+      crossorigin="anonymous"
+    />
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg bg-light py-3 shadow">
+    <nav class="navbar navbar-expand bg-light py-3 shadow">
       <div class="container">
         <%= link_to 'Blog App', root_path, class: 'navbar-brand' %>
 
@@ -27,9 +27,9 @@
           <ul class="navbar-nav ms-auto">
             <li class="nav-item">
               <% if user_signed_in? %>
-              <%= link_to "Log Out", destroy_user_session_path, data: { turbo_method: :delete }, class: 'title-link' %>
+                <%= button_to "Log Out", destroy_user_session_path, { method: :delete, data: { turbo: false }, class: 'btn btn-outline-dark'} %>
               <% else %>
-              <%= link_to 'Log In', user_session_path, class: 'title-link' %>
+                <%= link_to 'Log In', user_session_path, class: 'btn btn-outline-dark', role: 'button' %>
               <% end %>             
             </li>
           </ul>
