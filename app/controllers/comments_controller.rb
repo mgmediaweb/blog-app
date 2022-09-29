@@ -9,7 +9,15 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post])
     @comment = Comment.new(post: @post, author: current_user, text: params[:text])
-    redirect_to user_post_path(current_user, @post.id) if @comment.save
+
+    respond_to do |format|
+      format.html do
+        redirect_to user_post_path(current_user, @post.id) if @comment.save
+      end
+      format.json do
+        render json: @comment
+      end
+    end
   end
 
   def destroy

@@ -1,11 +1,16 @@
 class PostsController < ApplicationController
+  # load_and_authorize_resource
   before_action :authenticate_user!
-  load_and_authorize_resource
 
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:author)
     @title = "Post of #{@user.name}"
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @posts }
+    end
   end
 
   def show
@@ -27,6 +32,10 @@ class PostsController < ApplicationController
   def destroy
     Post.destroy(params[:id])
     redirect_to user_path(current_user)
+  end
+
+  rescue_from CanCan::AccessDenied do
+    redirect_to '/sign_in'
   end
 
   private
