@@ -104,8 +104,20 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-jwt (0.10.0)
+      devise (~> 4.0)
+      warden-jwt_auth (~> 0.6)
     diff-lcs (1.5.0)
     digest (3.1.0)
+    dry-auto_inject (0.9.0)
+      dry-container (>= 0.3.4)
+    dry-configurable (0.15.0)
+      concurrent-ruby (~> 1.0)
+      dry-core (~> 0.6)
+    dry-container (0.11.0)
+      concurrent-ruby (~> 1.0)
+    dry-core (0.8.1)
+      concurrent-ruby (~> 1.0)
     erubi (1.11.0)
     execjs (2.8.1)
     ffi (1.15.5-x64-mingw-ucrt)
@@ -122,6 +134,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jwt (2.5.0)
     loofah (2.18.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -253,6 +266,11 @@ GEM
     uniform_notifier (1.16.0)
     warden (1.2.9)
       rack (>= 2.0.9)
+    warden-jwt_auth (0.7.0)
+      dry-auto_inject (~> 0.8)
+      dry-configurable (~> 0.13)
+      jwt (~> 2.1)
+      warden (~> 1.2)
     web-console (4.2.0)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -274,6 +292,7 @@ PLATFORMS
   x64-mingw-ucrt
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   bootstrap (~> 5.0.2)
   bullet
@@ -281,6 +300,7 @@ DEPENDENCIES
   capybara
   debug
   devise
+  devise-jwt
   ffi
   importmap-rails
   jbuilder
