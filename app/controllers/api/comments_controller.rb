@@ -5,7 +5,7 @@ class Api::CommentsController < ApplicationController
   # before_action :authorize_request
 
   def index
-    p "--> #{params[:post_id]}"
+    #p "--> #{params[:post_id]}"
     @comments = Comment.where(post_id: params[:post_id])
     render json: @comments
   end
